@@ -15,12 +15,19 @@ export class TemplatesRepository {
               private templatesFactory: TemplatesFactory) {
   }
 
-  public getAllTemplates(): Observable<ReadonlyArray<Template>> {
+  public getAll(): Observable<ReadonlyArray<Template>> {
     return this.get<ReadonlyArray<TemplateJSON>>(this.TEMPLATES_URL).pipe(
       map((jsonArray: ReadonlyArray<TemplateJSON>) => this.templatesFactory.makeAll(jsonArray))
     );
   }
 
+  public getOne(id: string): Observable<Template> {
+    return this.get<TemplateJSON>(`${this.TEMPLATES_URL}/${id}`).pipe(
+      map((json: TemplateJSON) => this.templatesFactory.makeOne(json))
+    );
+  }
+
+  // todo: move to API service
   private get<T>(url: string): Observable<T> {
     return this.http.get<T>(url, {responseType: 'json'});
   }

@@ -1,4 +1,9 @@
-<div *ngIf="templates$ | async as templates">
-  {{templates | json}}
-</div>
+<h1>
+  Templates List
+</h1>
 
+<ng-container *ngIf="templates$ | async as templates; else loadingTmplRef">
+  <templates-list-table [dataSource]="templates"></templates-list-table>
+</ng-container>
+
+<ng-template #loadingTmplRef>Loading...</ng-template>

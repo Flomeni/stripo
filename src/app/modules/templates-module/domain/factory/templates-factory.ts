@@ -9,7 +9,7 @@ export class TemplatesFactory {
     return jsonArray.map((json: TemplateJSON) => this.makeOne(json));
   }
 
-  private makeOne(json: TemplateJSON): Template {
+  public makeOne(json: TemplateJSON): Template {
     return new Template(json);
   }
 }
