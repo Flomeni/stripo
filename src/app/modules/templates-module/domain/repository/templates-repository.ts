@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Template} from '../aggregates/Template';
+import {ListTemplate, ViewTemplate} from '../aggregates/Template';
 import {API, InMemoryDataService, TemplateJSON} from '../../../../in-memory-data.service';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
@@ -15,15 +15,15 @@ export class TemplatesRepository {
               private templatesFactory: TemplatesFactory) {
   }
 
-  public getAll(): Observable<ReadonlyArray<Template>> {
+  public getAllForList(): Observable<ReadonlyArray<ListTemplate>> {
     return this.get<ReadonlyArray<TemplateJSON>>(this.TEMPLATES_URL).pipe(
-      map((jsonArray: ReadonlyArray<TemplateJSON>) => this.templatesFactory.makeAll(jsonArray))
+      map((jsonArray: ReadonlyArray<TemplateJSON>) => this.templatesFactory.makeAllForList(jsonArray))
     );
   }
 
-  public getOne(id: string): Observable<Template> {
+  public getOneForView(id: string): Observable<ViewTemplate> {
     return this.get<TemplateJSON>(`${this.TEMPLATES_URL}/${id}`).pipe(
-      map((json: TemplateJSON) => this.templatesFactory.makeOne(json))
+      map((json: TemplateJSON) => this.templatesFactory.makeOneForView(json))
     );
   }
 

@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {Template} from '../../../../domain/aggregates/Template';
+import {ViewTemplate} from '../../../../domain/aggregates/Template';
 
 @Component({
   selector: 'templates-view-constructor',
@@ -9,5 +9,5 @@ import {Template} from '../../../../domain/aggregates/Template';
 export class TemplatesViewConstructorComponent {
 
   @Input()
-  template: Template | null = null;
+  template: ViewTemplate | null = null;
 }

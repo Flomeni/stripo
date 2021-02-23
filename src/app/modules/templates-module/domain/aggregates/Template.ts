@@ -1,20 +1,27 @@
 import {TemplateJSON} from '../../../../in-memory-data.service';
 
-export class Template {
+export class ListTemplate {
 
   readonly id: number;
   readonly name: string;
-  readonly template: string;
   readonly modified: Date;
 
   constructor(private _cnt: TemplateJSON) {
     this.id = _cnt.id;
     this.name = _cnt.name;
-    this.template = _cnt.template;
     this.modified = new Date(_cnt.modified);
   }
 
   public toJSON(): TemplateJSON {
     return this._cnt;
+  }
+}
+
+export class ViewTemplate extends ListTemplate {
+  readonly htmlString: string;
+
+  constructor(_cnt: TemplateJSON) {
+    super(_cnt);
+    this.htmlString = _cnt.template;
   }
 }
