@@ -7,9 +7,9 @@ import {VIEW_ID_TOKEN} from '../../../index';
 import {ViewTemplate} from '../../../domain/aggregates/Template';
 
 @Component({
-  templateUrl: './templates-view.component.html'
+  templateUrl: './template-view.component.html'
 })
-export class TemplatesViewComponent {
+export class TemplateViewComponent {
 
   public template$: Observable<ViewTemplate>;
 

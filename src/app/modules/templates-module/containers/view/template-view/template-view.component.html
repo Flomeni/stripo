@@ -1,0 +1,9 @@
+<div>
+  <a [routerLink]="['../../']"><= back</a>
+</div>
+
+<div *ngIf="template$ | async as template; else loading">
+  <template-constructor [template]="template"></template-constructor>
+</div>
+
+<ng-template #loading>Loading...</ng-template>

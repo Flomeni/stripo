@@ -1,0 +1,10 @@
+<ng-container *ngIf="element; else loadingTmpl">
+  <div *ngIf="element.isEditable"
+       [contentEditable]="element.isEditable"
+       [className]="element.className"
+       (input)="onContentChange($any($event.target).innerHTML)">
+    {{element.content}}
+  </div>
+  <ng-content></ng-content>
+</ng-container>
+<ng-template #loadingTmpl></ng-template>

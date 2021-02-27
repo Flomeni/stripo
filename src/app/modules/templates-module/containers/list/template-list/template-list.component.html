@@ -1,9 +1,9 @@
 <h1>
-  Templates List
+  Template List
 </h1>
 
 <ng-container *ngIf="templates$ | async as templates; else loadingTmplRef">
-  <templates-list-table [dataSource]="templates"></templates-list-table>
+  <template-list-table [dataSource]="templates"></template-list-table>
 </ng-container>
 
 <ng-template #loadingTmplRef>Loading...</ng-template>

@@ -1,13 +1,14 @@
-import {Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {ListTemplate} from '../../../domain/aggregates/Template';
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
-  selector: 'templates-list-table',
-  templateUrl: './templates-list-table.component.html',
-  styleUrls: ['./templates-list-table.component.less']
+  selector: 'template-list-table',
+  templateUrl: './template-list-table.component.html',
+  styleUrls: ['./template-list-table.component.less'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TemplatesListTableComponent {
+export class TemplateListTableComponent {
 
   @Input()
   dataSource: ReadonlyArray<ListTemplate> = [];

@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {TemplatesListComponent} from './containers/list/templates-list/templates-list.component';
-import {TemplatesViewComponent} from './containers/view/templates-view/templates-view.component';
+import {TemplateListComponent} from './containers/list/template-list/template-list.component';
+import {TemplateViewComponent} from './containers/view/template-view/template-view.component';
 import {VIEW_ID_TOKEN} from './index';
 
 const ROUTES: Routes = [
@@ -12,11 +12,11 @@ const ROUTES: Routes = [
   },
   {
     path: 'list',
-    component: TemplatesListComponent
+    component: TemplateListComponent
   },
   {
     path: `view/:${VIEW_ID_TOKEN}`,
-    component: TemplatesViewComponent
+    component: TemplateViewComponent
   }
 ];
 

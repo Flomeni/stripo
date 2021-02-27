@@ -4,10 +4,10 @@ import {Observable} from 'rxjs';
 import {ListTemplate} from '../../../domain/aggregates/Template';
 
 @Component({
-  templateUrl: './templates-list.component.html',
-  styleUrls: ['./templates-list.component.less']
+  templateUrl: './template-list.component.html',
+  styleUrls: ['./template-list.component.less']
 })
-export class TemplatesListComponent {
+export class TemplateListComponent {
 
   public templates$: Observable<ReadonlyArray<ListTemplate>>;
 

@@ -18,6 +18,7 @@ export class ListTemplate {
 }
 
 export class ViewTemplate extends ListTemplate {
+
   readonly htmlString: string;
 
   constructor(_cnt: TemplateJSON) {

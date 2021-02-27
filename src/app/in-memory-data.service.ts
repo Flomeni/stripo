@@ -31,7 +31,7 @@ export class InMemoryDataService implements InMemoryDbService  {
         id: 1,
         name: 'One',
         template: `
-          <div class='template'>
+          <div class='template asd'>
             <div class='editable'>
               One
             </div>
