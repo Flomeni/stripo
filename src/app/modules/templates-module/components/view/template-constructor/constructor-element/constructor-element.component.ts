@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ElementRef, EventEmitter, HostListener, Input, Output} from '@angular/core';
 import {ConstructorElement} from '../presentation-model/ConstructorElement';
 
 @Component({
@@ -15,7 +15,20 @@ export class ConstructorElementComponent {
   @Output()
   elementChange = new EventEmitter<void>();
 
-  constructor() {
+  public selected = false;
+
+  @HostListener('document:click', ['$event'])
+  private onClick(event: MouseEvent): void {
+    event.preventDefault();
+
+    this.selected = (this.elementRef.nativeElement as HTMLElement).contains(event.target as HTMLElement);
+  }
+
+  constructor(private elementRef: ElementRef) {
+  }
+
+  public select(): void {
+    this.selected = true;
   }
 
   public onContentChange(newContent: string): void {

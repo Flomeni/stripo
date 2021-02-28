@@ -1,3 +1,8 @@
+.height-and-width-defaults() {
+  width: 100%;
+  height: 100%;
+}
+
 :host {
   display: flex;
   justify-content: center;
@@ -12,11 +17,19 @@
 }
 
 .editable {
-  width: 100%;
+  .height-and-width-defaults;
   min-width: 50px;
   text-align: center;
 
   &:hover {
     cursor: text;
+  }
+}
+
+.container {
+  .height-and-width-defaults;
+
+  .selected {
+    box-shadow: 0px 0px 0px 3px #1a5f66 !important;
   }
 }
