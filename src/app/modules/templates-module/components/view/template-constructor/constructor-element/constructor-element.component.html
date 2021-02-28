@@ -1,11 +1,18 @@
 <ng-container *ngIf="element; else loadingTmpl">
-  <div class="container" [ngClass]="{'selected': selected}">
+  <div class="container" [ngClass]="{'selected': selected}" (click)="onClickSelectionHandler($event)">
     <div *ngIf="element.isEditable"
          [contentEditable]="element.isEditable && selected"
          [className]="element.className"
          (input)="onContentChange($any($event.target).innerHTML)">
+      <!-- content-->
       {{element.content}}
+      <!-- content-->
     </div>
+    <!-- operations-->
+    <div class="container__operations" *ngIf="selected">
+      <button class="container__operations__button">X</button>
+    </div>
+    <!-- operations-->
 
     <ng-content></ng-content>
   </div>

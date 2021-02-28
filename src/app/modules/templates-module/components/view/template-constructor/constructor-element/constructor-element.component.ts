@@ -18,17 +18,21 @@ export class ConstructorElementComponent {
   public selected = false;
 
   @HostListener('document:click', ['$event'])
-  private onClick(event: MouseEvent): void {
-    event.preventDefault();
+  private onClickDeselectionHandler(event: MouseEvent): void {
+    event.stopPropagation();
 
-    this.selected = (this.elementRef.nativeElement as HTMLElement).contains(event.target as HTMLElement);
+    if (!(this.elementRef.nativeElement as HTMLElement).contains(event.target as HTMLElement)) {
+      this.selected = false;
+    }
   }
 
   constructor(private elementRef: ElementRef) {
   }
 
-  public select(): void {
-    this.selected = true;
+  public onClickSelectionHandler(event: MouseEvent): void {
+    event.stopPropagation();
+
+    this.selected = (this.elementRef.nativeElement as HTMLElement).contains(event.target as HTMLElement);
   }
 
   public onContentChange(newContent: string): void {
