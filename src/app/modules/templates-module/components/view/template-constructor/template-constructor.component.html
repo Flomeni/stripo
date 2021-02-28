@@ -2,6 +2,7 @@
   <ng-template #recursiveTree let-elements>
     <ng-container *ngFor="let item of elements; index as i">
 
+      <!-- todo: replace concrete class usage for constructor-elements-factory -->
       <constructor-element [element]="item"
                            (elementChange)="onElementChange()">
         <!-- recursion -->

@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
-import {ConstructorElement} from '../presentational-model/ConstructorElement';
+import {ConstructorElement} from '../presentation-model/ConstructorElement';
 
 @Component({
   selector: 'constructor-element',

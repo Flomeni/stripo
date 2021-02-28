@@ -12,28 +12,35 @@ function parseHTMLFromString(htmlString: string): HTMLDivElement {
 
 export class TemplatePM {
 
-  private _element: HTMLElement;
   readonly constructorElement: ConstructorElement;
 
   constructor(private _template: ViewTemplate) {
     const element = parseHTMLFromString(_template.htmlString);
-    this._element = element;
     this.constructorElement = this.domToConstructorElements(element);
-  }
-
-  get node(): HTMLElement {
-    return this._element;
   }
 
   get template(): ViewTemplate {
     return this._template;
   }
 
-  private domToConstructorElements(dom: HTMLElement): any {
+  public toHtmlString(): string {
+    const getHtmlString = (el: ConstructorElement) => {
+      const children: string[] = [];
+      for (const child of el.children) {
+        children.push(getHtmlString(child));
+      }
+
+      const childrenString = children.join('');
+      return el.getAsHtmlString(childrenString);
+    };
+
+    return getHtmlString(this.constructorElement);
+  }
+
+  private domToConstructorElements(dom: HTMLElement): ConstructorElement {
     const children: ConstructorElement[] = [];
-    for (let i = 0; i < dom.childElementCount; i++) {
-      const element = dom.children[i] as HTMLElement;
-      children.push(this.domToConstructorElements(element));
+    for (const child of Array.from(dom.children)) {
+      children.push(this.domToConstructorElements(child as HTMLElement));
     }
 
     return new ConstructorElement(dom, children);

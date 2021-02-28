@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
 import {ViewTemplate} from '../../../domain/aggregates/Template';
-import {TemplatePM} from './presentational-model/TemplatePM';
+import {TemplatePM} from './presentation-model/TemplatePM';
 
 @Component({
   selector: 'template-constructor',
@@ -24,6 +24,10 @@ export class TemplateConstructorComponent {
   }
 
   public onElementChange(): void {
-    console.log(this.templatePM);
+    if (!this.templatePM) {
+      return;
+    }
+    console.log(this.templatePM.toHtmlString());
+    console.log(this.templatePM.template.htmlString);
   }
 }

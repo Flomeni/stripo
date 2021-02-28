@@ -56,7 +56,7 @@
       true,
       "ignore-params"
     ],
-    "no-non-null-assertion": true,
+    "no-non-null-assertion": false,
     "no-redundant-jsdoc": true,
     "no-switch-case-fall-through": true,
     "no-var-requires": false,
@@ -107,7 +107,6 @@
     "variable-name": {
       "options": [
         "ban-keywords",
-        "check-format",
         "allow-pascal-case"
       ]
     },
@@ -145,7 +144,6 @@
     "component-selector": [
       true,
       "element",
-      "app",
       "kebab-case"
     ]
   }
